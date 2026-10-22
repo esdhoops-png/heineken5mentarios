@@ -313,7 +313,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 // ─────────────────────────────────────────────────────────────
 //  DATOS DEL PORTAL · edita aquí
 // ─────────────────────────────────────────────────────────────
-const REVISION = "20/10/2026";   // fecha de última revisión de cada apartado
+const REVISION = "22/10/2026";   // fecha de última revisión de cada apartado
 
 const ENTIDAD = {
   razon: "Eventos Josué Arucas LP5, S.L.U.",
@@ -325,12 +325,12 @@ const ENTIDAD = {
 
 // Documentos descargables. Formatos vacíos ("") no se muestran; si no hay ninguno, sale "pendiente".
 const DOCS = {
-  censal:      { t: "Certificado de situación censal", s: "Agencia Tributaria · expedido el 07/10/2026", pdf: "docs/certificado-situacion-censal.pdf", docx: "docs/certificado-situacion-censal.docx", odt: "docs/certificado-situacion-censal.odt" },
+  censal:      { t: "Certificado de situación censal", s: "Agencia Tributaria · expedido el 07/10/2026", pdf: "docs/certificado-situacion-censal.pdf", epub: "docs/certificado-situacion-censal.epub", docx: "docs/certificado-situacion-censal.docx", odt: "docs/certificado-situacion-censal.odt" },
   estatutos:   { t: "Estatutos registrados", s: "Eventos Josué Arucas LP5, Sociedad Limitada", pdf: "docs/estatutos.pdf", epub: "docs/estatutos.epub", docx: "docs/estatutos.docx", odt: "docs/estatutos.odt" },
   protocolo:   { t: "Protocolo frente al acoso sexual y por razón de sexo", s: "Aprobado el 06/10/2025 · vigente hasta el 09/11/2027", pdf: "docs/protocolo-acoso.pdf", epub: "docs/protocolo-acoso.epub", docx: "docs/protocolo-acoso.docx", odt: "docs/protocolo-acoso.odt" },
   objeto:      { t: "Objeto social y funciones de la empresa", s: "", pdf: "docs/objeto-social.pdf", epub: "docs/objeto-social.epub", docx: "docs/objeto-social.docx", odt: "docs/objeto-social.odt" },
   organigrama: { t: "Organigrama y plantilla media 2025", s: "Estructura jerárquica y distribución del personal", pdf: "docs/organigrama-y-plantilla.pdf", epub: "docs/organigrama-y-plantilla.epub", docx: "docs/organigrama-y-plantilla.docx", odt: "docs/organigrama-y-plantilla.odt" },
-  cv:          { t: "Currículum del administrador", s: "Cayetano Josué González Pérez", pdf: "docs/curriculum-administrador.pdf", epub: "docs/curriculum-administrador.epub", docx: "docs/curriculum-administrador.docx", odt: "docs/curriculum-administrador.odt" },
+  cv:          { t: "Currículum del administrador", s: "Cayetano Josué González Pérez" },
   direccion:   { t: "Dirección general de la empresa", s: "Funciones, dedicación y retribución del administrador", pdf: "docs/direccion-general.pdf", epub: "docs/direccion-general.epub", docx: "docs/direccion-general.docx", odt: "docs/direccion-general.odt" }
 };
 
@@ -347,19 +347,19 @@ const CUENTAS = [
     { t: "Cuenta de pérdidas y ganancias 2024", pdf: "docs/perdidas-y-ganancias-2024.pdf", epub: "docs/perdidas-y-ganancias-2024.epub", docx: "docs/perdidas-y-ganancias-2024.docx", odt: "docs/perdidas-y-ganancias-2024.odt" } ] },
   { year: 2025, docs: [
     { t: "Cuentas anuales y memoria 2025" },
-    { t: "Balance de situación provisional", s: "Periodo de enero a junio de 2026 · listado a 30/07/2026", pdf: "docs/balance-de-situacion-provisional-2026.pdf" },
-    { t: "Cuenta de pérdidas y ganancias provisional", s: "Periodo de enero a junio de 2026 · listado a 30/07/2026", pdf: "docs/perdidas-y-ganancias-provisional-2026.pdf" },
-    { t: "Impuesto sobre Sociedades 2025", s: "Modelo 200 · presentado el 17/07/2026", pdf: "docs/impuesto-sobre-sociedades-2025.pdf" } ] }
+    { t: "Balance de situación provisional", s: "Periodo de enero a junio de 2026 · listado a 30/07/2026", pdf: "docs/balance-de-situacion-provisional-2026.pdf", epub: "docs/balance-de-situacion-provisional-2026.epub", docx: "docs/balance-de-situacion-provisional-2026.docx", odt: "docs/balance-de-situacion-provisional-2026.odt" },
+    { t: "Cuenta de pérdidas y ganancias provisional", s: "Periodo de enero a junio de 2026 · listado a 30/07/2026", pdf: "docs/perdidas-y-ganancias-provisional-2026.pdf", epub: "docs/perdidas-y-ganancias-provisional-2026.epub", docx: "docs/perdidas-y-ganancias-provisional-2026.docx", odt: "docs/perdidas-y-ganancias-provisional-2026.odt" },
+    { t: "Impuesto sobre Sociedades 2025", s: "Modelo 200 · presentado el 17/07/2026", pdf: "docs/impuesto-sobre-sociedades-2025.pdf", epub: "docs/impuesto-sobre-sociedades-2025.epub", docx: "docs/impuesto-sobre-sociedades-2025.docx", odt: "docs/impuesto-sobre-sociedades-2025.odt" } ] }
 ];
 
 const LEYES = [
-  ["Ley 19/2013", "de 9 de diciembre, de Transparencia, Acceso a la Información Pública y Buen Gobierno.", "https://www.boe.es/eli/es/l/2013/12/09/19/con", "docs/leyes/ley-19-2013.epub"],
-  ["Ley 12/2014", "de 26 de diciembre, de Transparencia y de Acceso a la Información Pública de Canarias.", "https://www.boe.es/eli/es-cn/l/2014/12/26/12/con", "docs/leyes/ley-12-2014-canarias.epub"],
-  ["Real Decreto Legislativo 1/2010", "de 2 de julio, por el que se aprueba el texto refundido de la Ley de Sociedades de Capital.", "https://www.boe.es/eli/es/rdlg/2010/07/02/1/con", "docs/leyes/rdl-1-2010-sociedades-capital.epub"],
-  ["Ley Orgánica 3/2018", "de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales.", "https://www.boe.es/eli/es/lo/2018/12/05/3/con", "docs/leyes/lo-3-2018-proteccion-datos.epub"],
-  ["Ley 20/1991", "de 7 de junio, de modificación de los aspectos fiscales del Régimen Económico Fiscal de Canarias.", "https://www.boe.es/eli/es/l/1991/06/07/20/con", "docs/leyes/ley-20-1991-ref-canarias.epub"],
-  ["Real Decreto 634/2015", "de 10 de julio, por el que se aprueba el Reglamento del Impuesto sobre Sociedades.", "https://www.boe.es/eli/es/rd/2015/07/10/634/con", "docs/leyes/rd-634-2015-impuesto-sociedades.epub"],
-  ["Real Decreto Legislativo 1175/1990", "de 28 de septiembre, por el que se aprueban las tarifas y la instrucción del Impuesto sobre Actividades Económicas.", "https://www.boe.es/eli/es/rdlg/1990/09/28/1175/con", "docs/leyes/rdl-1175-1990-iae.epub"]
+  ["Ley 19/2013", "de 9 de diciembre, de Transparencia, Acceso a la Información Pública y Buen Gobierno.", "https://www.boe.es/eli/es/l/2013/12/09/19/con", ""],
+  ["Ley 12/2014", "de 26 de diciembre, de Transparencia y de Acceso a la Información Pública de Canarias.", "https://www.boe.es/eli/es-cn/l/2014/12/26/12/con", ""],
+  ["Real Decreto Legislativo 1/2010", "de 2 de julio, por el que se aprueba el texto refundido de la Ley de Sociedades de Capital.", "https://www.boe.es/eli/es/rdlg/2010/07/02/1/con", ""],
+  ["Ley Orgánica 3/2018", "de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales.", "https://www.boe.es/eli/es/lo/2018/12/05/3/con", ""],
+  ["Ley 20/1991", "de 7 de junio, de modificación de los aspectos fiscales del Régimen Económico Fiscal de Canarias.", "https://www.boe.es/eli/es/l/1991/06/07/20/con", ""],
+  ["Real Decreto 634/2015", "de 10 de julio, por el que se aprueba el Reglamento del Impuesto sobre Sociedades.", "https://www.boe.es/eli/es/rd/2015/07/10/634/con", ""],
+  ["Real Decreto Legislativo 1175/1990", "de 28 de septiembre, por el que se aprueban las tarifas y la instrucción del Impuesto sobre Actividades Económicas.", "https://www.boe.es/eli/es/rdlg/1990/09/28/1175/con", ""]
 ];
 
 // Cada ayuda: fila de la tabla (inst, objeto, proyecto, periodo, importe), detalle [etiqueta, valor] ("" = pendiente),
@@ -405,7 +405,7 @@ const SELLO = { img: "", texto: "" };   // p. ej. img: "img/sello-transparencia.
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const pend = (v, t = "Pendiente") => v ? esc(v) : `<span class="pend">${t}</span>`;
-const FMT = [["pdf", "PDF"], ["epub", "EPUB"], ["docx", "WORD"], ["odt", "ODT"]];
+const FMT = [["pdf", "PDF"], ["docx", "WORD"], ["odt", "ODT"], ["epub", "EPUB"]];
 const docHTML = d => {
   const f = FMT.filter(([k]) => d[k]);
   return `<div class="doc"><div class="t"><b>${esc(d.t)}</b>${d.s ? `<small>${esc(d.s)}</small>` : ""}</div><div class="fmts">${f.length ? f.map(([k, l]) => `<a class="fmt" href="${esc(d[k])}" download>${l}</a>`).join("") : '<span class="pend">Documento pendiente de incorporar</span>'}</div></div>`;
