@@ -311,6 +311,8 @@ section{padding-block:clamp(90px,12vw,160px);position:relative}
 .hoy-ev .grid.noimg h2 .o{display:inline;margin-left:.18em}
 .hoy-ev .grid.noimg .when{max-width:980px}
 @media (max-width:860px){.hoy-ev .grid.noimg h2 .o{display:block;margin-left:0}}
+.hoy-ev .grid h2.largo{font-size:clamp(58px,9vw,130px)}
+.hoy-ev .grid h2.largo .o{display:block;margin-left:0}
 .hoy-ev .ver{margin-left:10px}
 @media (max-width:860px){.hoy-ev .grid{grid-template-columns:1fr}.hoy-ev figure{max-width:380px;order:-1}}
 nav .hoy-pill{display:inline-flex;align-items:center;gap:8px;background:var(--verde);color:#04120A!important;padding:7px 12px;border-radius:999px;font-weight:700!important;font-size:13px!important}
@@ -633,9 +635,9 @@ const FUNDADO = 2002;
 const RESERVAS = "https://wa.me/34627304115?text=";
 // Se muestra el próximo de la lista; cuando pasa su fecha, sale solo el siguiente. Sin img, sale el sello del bar.
 const EVENTOS = [
-  { nombre: "Pedro Afonso", fecha: "2026-10-17", dia: "Sábado", fechaTexto: "Sábado 17 oct", tag: "En directo en 5mentarios", programa: [], img: "img/pedro-afonso.jpg" },
-  { nombre: "Son Aldea", fecha: "2026-10-23", dia: "Viernes", fechaTexto: "Viernes 23 oct", tag: "En directo en 5mentarios", programa: [["22:30", "Son Aldea", "en directo"], ["00:00", "DJ Ake", "a los platos"]], img: "img/son-aldea.webp" },
-  { nombre: "Havana 500", fecha: "2026-10-24", dia: "Sábado", fechaTexto: "Sábado 24 oct", tag: "En directo en 5mentarios", programa: [["22:30", "Havana 500", "en directo"], ["00:00", "DJ Asped", "a los platos"]], img: "" },
+  { nombre: "Juan Antonio Cabrera", fecha: "2026-11-12", dia: "Jueves", fechaTexto: "Jueves 12 nov", tag: "Monólogos en 5mentarios", partes: ["Juan Antonio", "Cabrera"], programa: [["21:00", "Juan Antonio Cabrera", "monólogo"]], img: "" },
+  { nombre: "Son Diferente", fecha: "2026-11-13", dia: "Viernes", fechaTexto: "Viernes 13 nov", tag: "En directo en 5mentarios", programa: [["22:30", "Son Diferente", "en directo"], ["00:00", "DJ Ruven", "a los platos"]], img: "" },
+  { nombre: "Tardeo Exterior", fecha: "2026-11-14", dia: "Sábado", fechaTexto: "Sábado 14 nov · Halloween", tag: "Tardeo en el exterior · Organiza Ayto. de Arucas", programa: [["16:00", "DJ Ruven", "a los platos"], ["17:30", "Apolo", "en directo"], ["19:30", "Son Aldea", "en directo"], ["21:30", "Pedro Afonso", "en directo"]], img: "" },
 ];
 
 // ── El Clásico: sección propia con cuenta atrás (se ve hasta que acaba el partido)
@@ -670,10 +672,11 @@ const CLASICO = { inicio: "2026-10-25T20:00:00Z", fin: "2026-10-25T22:15:00Z" };
   if (!EVENTO) return;
   const dias = Math.round((new Date(EVENTO.fecha + 'T12:00') - new Date(hoyStr + 'T12:00')) / 864e5);
   const cuando = dias === 0 ? '¡Hoy!' : dias === 1 ? '¡Mañana!' : dias <= 6 ? 'Este ' + EVENTO.dia.toLowerCase() : 'Próximamente';
-  const [n1, ...resto] = EVENTO.nombre.split(' ');
+  const [n1, ...resto] = EVENTO.partes || EVENTO.nombre.split(' ');
   const set = (k, v) => document.querySelectorAll(`[data-ev="${k}"]`).forEach(e => e.textContent = v);
   set('nombre1', n1); set('nombre2', resto.join(' ')); set('fecha', EVENTO.fechaTexto); set('tag', EVENTO.tag);
   set('cuando', cuando);
+  if (EVENTO.nombre.length > 14) document.querySelector('[data-ev="nombre1"]').closest('h2').classList.add('largo');
   document.querySelector('[data-ev-prog]').innerHTML = (EVENTO.programa || []).map(([h, q, d]) => `<p><b>${h}</b>${q}<span>${d || ''}</span></p>`).join('');
   const im = document.querySelector('[data-ev-img]');
   if (EVENTO.img) { im.src = EVENTO.img; im.alt = EVENTO.nombre + ' en directo'; }
@@ -686,9 +689,9 @@ const CLASICO = { inicio: "2026-10-25T20:00:00Z", fin: "2026-10-25T22:15:00Z" };
 
 // ── Programación de la semana (cada día desaparece solo cuando pasa; si no queda ninguno, sale la agenda general)
 const PROGRAMA = [
-  { fecha: "2026-10-23", dia: "Viernes", num: "23", titulo: "Son Aldea", tipo: "Directo", items: [["22:30", "Son Aldea en directo"], ["00:00", "DJ Ake"]] },
-  { fecha: "2026-10-24", dia: "Sábado", num: "24", titulo: "Havana 500", tipo: "Directo", items: [["22:30", "Havana 500 en directo"], ["00:00", "DJ Asped"]] },
-  { fecha: "2026-10-25", dia: "Domingo", num: "25", titulo: "El Clásico", tipo: "Fútbol", items: [["20:00", "Barça – R. Madrid en pantalla grande"]] }
+  { fecha: "2026-11-12", dia: "Jueves", num: "12", titulo: "Monólogos", tipo: "Humor", items: [["21:00", "Juan Antonio Cabrera"]] },
+  { fecha: "2026-11-13", dia: "Viernes", num: "13", titulo: "Son Diferente", tipo: "Directo", items: [["22:30", "Son Diferente en directo"], ["00:00", "DJ Ruven"]] },
+  { fecha: "2026-11-14", dia: "Sábado", num: "14", titulo: "Tardeo Exterior", tipo: "Halloween", items: [["16:00", "DJ Ruven"], ["17:30", "Apolo"], ["19:30", "Son Aldea"], ["21:30", "Pedro Afonso"]] }
 ];
 (() => {
   const hoy = new Date().toLocaleDateString('sv-SE');
